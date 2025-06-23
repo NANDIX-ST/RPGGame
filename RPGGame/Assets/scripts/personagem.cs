@@ -1,29 +1,33 @@
 using UnityEngine;
 
-[System.Serializable]
 public class Personagem
 {
-    public string nome;
-    public int nivel;
-    public float vida;
-    public float ataque;
+    // 1.1 - Quatro variáveis com getters e setters
+    private string nome;
+    private int nivel;
+    private int vida;
+    private int mana;
 
-    // Getters e Setters
     public string GetNome() => nome;
-    public void SetNome(string novoNome) => nome = novoNome;
+    public void SetNome(string value) => nome = value;
 
     public int GetNivel() => nivel;
-    public void SetNivel(int novoNivel) => nivel = novoNivel;
+    public void SetNivel(int value) => nivel = value;
 
-    public float GetVida() => vida;
-    public void SetVida(float novaVida) => vida = novaVida;
+    public int GetVida() => vida;
+    public void SetVida(int value) => vida = value;
 
-    public float GetAtaque() => ataque;
-    public void SetAtaque(float novoAtaque) => ataque = novoAtaque;
+    public int GetMana() => mana;
+    public void SetMana(int value) => mana = value;
 
-    // 2. Comparação entre dois personagens
-    public bool CompararNivel(Personagem outro)
+    // 2 - Função de comparação entre dois personagens
+    public string CompararForca(Personagem outro)
     {
-        return this.nivel > outro.nivel;
+        if (this.nivel > outro.nivel)
+            return $"{nome} é mais forte que {outro.GetNome()}";
+        else if (this.nivel < outro.nivel)
+            return $"{nome} é mais fraco que {outro.GetNome()}";
+        else
+            return $"{nome} e {outro.GetNome()} têm o mesmo nível de força";
     }
 }
