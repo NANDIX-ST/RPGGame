@@ -1,33 +1,45 @@
 using UnityEngine;
 
-public class Personagem
+public class Personagem : MonoBehaviour
 {
-    // 1.1 - Quatro variáveis com getters e setters
-    private string nome;
-    private int nivel;
-    private int vida;
-    private int mana;
+    [SerializeField] private string nome;
+    [SerializeField] private int nivel;
+    [SerializeField] private int vida;
+    [SerializeField] private int mana;
 
-    public string GetNome() => nome;
-    public void SetNome(string value) => nome = value;
+    // Propriedades para acessar as variáveis privadas
+    public string Nome
+    {
+        get => nome;
+        set => nome = value;
+    }
 
-    public int GetNivel() => nivel;
-    public void SetNivel(int value) => nivel = value;
+    public int Nivel
+    {
+        get => nivel;
+        set => nivel = value;
+    }
 
-    public int GetVida() => vida;
-    public void SetVida(int value) => vida = value;
+    public int Vida
+    {
+        get => vida;
+        set => vida = value;
+    }
 
-    public int GetMana() => mana;
-    public void SetMana(int value) => mana = value;
+    public int Mana
+    {
+        get => mana;
+        set => mana = value;
+    }
 
-    // 2 - Função de comparação entre dois personagens
-    public string CompararForca(Personagem outro)
+    // Função para comparar nível entre personagens
+    public string CompararNivel(Personagem outro)
     {
         if (this.nivel > outro.nivel)
-            return $"{nome} é mais forte que {outro.GetNome()}";
+            return $"{this.nome} é mais forte que {outro.nome}.";
         else if (this.nivel < outro.nivel)
-            return $"{nome} é mais fraco que {outro.GetNome()}";
+            return $"{outro.nome} é mais forte que {this.nome}.";
         else
-            return $"{nome} e {outro.GetNome()} têm o mesmo nível de força";
+            return $"{this.nome} e {outro.nome} têm o mesmo nível.";
     }
 }
